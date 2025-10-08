@@ -1,240 +1,1233 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="img/favicon.png" type="image/png">
-        <title>My profile </title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="vendors/linericon/style.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-        <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
-        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
-        <link rel="stylesheet" href="vendors/animate-css/animate.css">
-        <link rel="stylesheet" href="vendors/flaticon/flaticon.css">
-        <!-- main css -->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/responsive.css">
-    </head>
-    <body>
-        
-        <!--================Header Menu Area =================-->
-        <header class="header_area">
-            <div class="main_menu" id="mainNav">
-            	<nav class="navbar navbar-expand-lg navbar-light">
-					<div class="container box_1620">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="index.html">Jean D'amour MPATSWENIMANA</a>
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-							<ul class="nav navbar-nav menu_nav ml-auto">
-								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
-								<li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li> 
-								<li class="nav-item"><a class="nav-link" href="index.html#portfolio">Portfolio</a>
-								   
-							</ul>
-						</div> 
-					</div>
-            	</nav>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jean-Damour | Portfolio</title>
+  <meta name="description" content="UX Designer & Team Lead Portfolio">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Additional styles for the profile image */
+    .brand__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--color-primary, #6366f1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+    
+    .brand__avatar:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Hero profile image - much larger */
+    .hero__avatar {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--color-primary, #6366f1);
+      box-shadow: 0 15px 35px rgba(99, 102, 241, 0.25);
+      margin-bottom: 2rem;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    
+    .hero__avatar:hover {
+      transform: scale(1.03);
+      box-shadow: 0 20px 45px rgba(99, 102, 241, 0.35);
+    }
+    
+    /* Additional enhancements */
+    .nav__links a.active {
+      color: var(--color-primary, #6366f1);
+      font-weight: 600;
+    }
+    
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-primary, #6366f1), var(--color-secondary, #8b5cf6));
+      z-index: 100;
+      transition: width 0.2s ease;
+    }
+    
+    
+    /* Animation for hero elements */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero__inner > * {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .hero__inner > *:nth-child(1) { animation-delay: 0.1s; opacity: 0; }
+    .hero__inner > *:nth-child(2) { animation-delay: 0.2s; opacity: 0; }
+    .hero__inner > *:nth-child(3) { animation-delay: 0.3s; opacity: 0; }
+    .hero__inner > *:nth-child(4) { animation-delay: 0.4s; opacity: 0; }
+    .hero__inner > *:nth-child(5) { animation-delay: 0.5s; opacity: 0; }
+    .hero__inner > *:nth-child(6) { animation-delay: 0.6s; opacity: 0; }
+    
+    /* Responsive adjustments for the larger image */
+    @media (max-width: 768px) {
+      .hero__avatar {
+        width: 180px;
+        height: 180px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero__avatar {
+        width: 150px;
+        height: 150px;
+        border-width: 4px;
+      }
+    }
+    
+    /* Image container for modal - IMPROVED */
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    
+    .image-container img {
+      /* Images display clearly without loading states */
+      width: 95%;
+      height: 95%;
+      max-width: 95%;
+      max-height: 95vh;
+      object-fit: contain;
+      display: block;
+      margin: auto;
+    }
+    
+    
+    /* Error message */
+    .error-message {
+      color: var(--muted-foreground);
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+    }
+    
+    /* Image caption */
+    .image-caption {
+      text-align: center;
+      padding: 12px 0;
+      color: var(--muted-foreground);
+      font-style: italic;
+      min-height: 24px;
+    }
+    
+    
+    /* Keyboard shortcuts help */
+    .keyboard-help {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: 20;
+    }
+    
+    .help-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(15,23,42,0.6);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    
+    .help-toggle:hover {
+      background: rgba(15,23,42,0.8);
+    }
+    
+    .help-content {
+      position: absolute;
+      bottom: 30px;
+      right: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 12px;
+      width: 220px;
+      font-size: 13px;
+    }
+    
+    .help-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+    
+    .help-shortcuts div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 6px;
+      color: var(--muted-foreground);
+    }
+    
+    kbd {
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 6px;
+      margin-right: 8px;
+      font-family: monospace;
+      font-size: 12px;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    }
+    
+    /* Modal improvements - IMPROVED */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal__backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+    }
+    
+    .modal__dialog {
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .modal__dialog--lg {
+      width: 95%;
+      max-width: 1400px;
+      height: 95vh; /* Increased from 90vh */
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .modal__close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(15,23,42,0.6);
+      color: white;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal__close:hover {
+      background: rgba(15,23,42,0.8);
+    }
+    
+    /* Slider improvements - IMPROVED */
+    .slider {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .slider__viewport {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+      min-height: 80vh; /* Added minimum height */
+    }
+    
+    .slider__track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.3s ease;
+    }
+    
+    .slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .slider__control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(15,23,42,0.6);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .slider__control:hover {
+      background: rgba(15,23,42,0.8);
+    }
+    
+    .slider__control--prev {
+      left: 10px;
+    }
+    
+    .slider__control--next {
+      right: 10px;
+    }
+    
+    .slider__control:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    
+    .slider__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.05);
+    }
+    
+    .dots {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.3);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .dot.active {
+      background: var(--color-primary, #6366f1);
+    }
+    
+    .counter {
+      font-size: 14px;
+      color: var(--muted-foreground);
+    }
+    
+    /* Responsive improvements for modal - IMPROVED */
+    @media (max-width: 768px) {
+      .modal__dialog--lg {
+        width: 95vw;
+        padding: 12px;
+        height: 90vh; /* Adjusted for mobile */
+      }
+      
+      
+      .modal__close {
+        font-size: 24px;
+      }
+      
+      .slider__control {
+        width: 36px;
+        height: 36px;
+        font-size: 24px;
+      }
+      
+      .image-container img {
+        width: 95%;
+        height: 95%;
+        max-height: 75vh; /* Adjusted for mobile */
+      }
+      
+      .slider__viewport {
+        min-height: 70vh; /* Adjusted for mobile */
+      }
+      
+      .help-content {
+        width: 180px;
+        font-size: 12px;
+        padding: 8px;
+      }
+      
+      .help-shortcuts div {
+        margin-bottom: 4px;
+        font-size: 11px;
+      }
+      
+      kbd {
+        padding: 1px 4px;
+        font-size: 10px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .modal__dialog--lg {
+        width: 98vw;
+        padding: 8px;
+        height: 85vh; /* Adjusted for small mobile */
+      }
+      
+      
+      .modal__close {
+        font-size: 20px;
+        top: 6px;
+        right: 6px;
+      }
+      
+      .slider__control {
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+      }
+      
+      .image-container img {
+        width: 98%;
+        height: 98%;
+        max-height: 70vh; /* Adjusted for small mobile */
+      }
+      
+      .slider__viewport {
+        min-height: 65vh; /* Adjusted for small mobile */
+      }
+      
+      .slider__footer {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .dots {
+        justify-content: center;
+      }
+      
+      .counter {
+        font-size: 12px;
+      }
+      
+      .image-caption {
+        font-size: 12px;
+        padding: 8px 0;
+      }
+      
+      .keyboard-help {
+        bottom: 5px;
+        right: 5px;
+      }
+      
+      .help-toggle {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+      }
+      
+      .help-content {
+        width: 160px;
+        bottom: 25px;
+        font-size: 11px;
+        padding: 6px;
+      }
+      
+      .help-title {
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+      
+      .help-shortcuts div {
+        margin-bottom: 3px;
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll progress indicator -->
+  <div class="scroll-indicator" id="scrollIndicator"></div>
+  
+  <nav class="nav">
+    <div class="container nav__inner">
+      <div class="brand">
+        <img class="brand__avatar" src="https://avatars.githubusercontent.com/u/10071875?v=4" alt="Jean-Damour Profile Picture" loading="lazy">
+        <span class="brand__text">JD</span>
+      </div>
+      <button class="nav__toggle" aria-label="Toggle menu" id="menuToggle">☰</button>
+      <div class="nav__links" id="navLinks">
+        <a href="#home" class="nav-link">home</a>
+        <a href="#about" class="nav-link">about</a>
+        <a href="#skills" class="nav-link">skills</a>
+        <a href="#projects" class="nav-link">projects</a>
+        <a href="#contact" class="nav-link">contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header id="home" class="section hero">
+    <div class="container hero__inner">
+      <!-- Large profile image first -->
+      <img class="hero__avatar" src="https://avatars.githubusercontent.com/u/10071875?v=4" alt="Jean-Damour Profile Picture" loading="lazy">
+      
+      <!-- Title moved below the image -->
+      <h1 class="hero__title"><span class="gradient">Hi, I'm Jean-Damour Mpatswenimana</span></h1>
+      
+      <!-- Badge moved after title -->
+      <div class="badge">
+        <span class="badge__dot"></span>
+        UX Designer & Team Lead
+      </div>
+      
+      <p class="hero__subtitle">Crafting exceptional user experiences while leading development teams to build innovative digital solutions</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#projects">View My Work →</a>
+        <a class="btn btn--outline" href="#contact">Get In Touch ✉️</a>
+      </div>
+      <div class="socials">
+        <a href="https://github.com/JDamour" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+        <a href="https://www.linkedin.com/in/jean-d-amour-mpatswenimana/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+        <a href="mailto:mpatswenimanaj@gmail.com" aria-label="Email">Email</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="section section--muted">
+    <div class="container">
+      <h2 class="section__title">About Me</h2>
+      <div class="grid grid--2">
+        <div>
+          <p class="lead">I'm a passionate UX Designer and Team Lead with over 8 years of experience creating digital products that users love. My unique blend of design expertise and technical leadership allows me to bridge the gap between user needs and business goals.</p>
+          <p class="lead">I believe in the power of user-centered design and agile methodologies to deliver exceptional results. Whether I'm conducting user research, designing interfaces, or leading development teams, my focus remains on creating meaningful and impactful digital experiences.</p>
+          <div class="icon-grid">
+            <div class="icon-item"><span class="dot dot--primary"></span><span>UX Design</span></div>
+            <div class="icon-item"><span class="dot dot--secondary"></span><span>Frontend Dev</span></div>
+            <div class="icon-item"><span class="dot dot--accent"></span><span>Team Leadership</span></div>
+            <div class="icon-item"><span class="dot dot--primary"></span><span>Innovation</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <div class="card__header">Quick Stats</div>
+            <div class="card__content">
+              <div class="stat"><span>Projects Completed</span><strong>50+</strong></div>
+              <hr>
+              <div class="stat"><span>Team Size Led</span><strong>15+ members</strong></div>
+              <hr>
+              <div class="stat"><span>Years Experience</span><strong>8+ years</strong></div>
+              <hr>
+              <div class="stat"><span>Client Satisfaction</span><strong>98%</strong></div>
             </div>
-        </header>
-        <!--================Header Menu Area =================-->
-        
-        <!--================Home Banner Area =================-->
-        <section class="home_banner_area">
-            <div class="banner_inner">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="home_left_img">
-								<img src="img/banner/home-left-1.png" alt="">
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="banner_content">
-								<h5>This is me</h5>
-								<h2 style="font-size: 31px;">Jean D'amour MPATSWENIMANA</h2>
-								<p>Software Developer and Indie game developer with more than 5 year experience in software industry</p>
-								<a class="banner_btn" href="https://www.linkedin.com/in/jean-d-amour-mpatswenimana/" target="_blank">Look my CV on linkedin</a>
-							</div>
-						</div>
-						
-					</div>
-				</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section__title">Skills &amp; Expertise</h2>
+      <div class="grid grid--4">
+        <div class="card h-full">
+          <div class="card__header">UX Design</div>
+          <div class="card__content chips">
+            <span class="chip chip--secondary">User Research</span>
+            <span class="chip chip--secondary">Wireframing</span>
+            <span class="chip chip--secondary">Prototyping</span>
+            <span class="chip chip--secondary">Usability Testing</span>
+            <span class="chip chip--secondary">Design Systems</span>
+          </div>
+        </div>
+        <div class="card h-full">
+          <div class="card__header">Frontend</div>
+          <div class="card__content chips">
+            <span class="chip">React</span>
+            <span class="chip">Next.js</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">Tailwind CSS</span>
+            <span class="chip">Framer Motion</span>
+          </div>
+        </div>
+        <div class="card h-full">
+          <div class="card__header">Leadership</div>
+          <div class="card__content chips">
+            <span class="chip">Team Management</span>
+            <span class="chip">Agile/Scrum</span>
+            <span class="chip">Code Review</span>
+            <span class="chip">Mentoring</span>
+            <span class="chip">Project Planning</span>
+          </div>
+        </div>
+        <div class="card h-full">
+          <div class="card__header">Tools</div>
+          <div class="card__content chips">
+            <span class="chip">Figma</span>
+            <span class="chip">Sketch</span>
+            <span class="chip">Adobe XD</span>
+            <span class="chip">Git</span>
+            <span class="chip">Jira</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section section--muted">
+    <div class="container">
+      <h2 class="section__title">Featured Projects</h2>
+      <div class="grid grid--3">
+        <div class="card project project-card">
+          <div class="card__header">E-Commerce Platform Redesign</div>
+          <div class="card__content">
+            <p>Led a complete UX overhaul of a major e-commerce platform, resulting in 40% increase in conversion rates.</p>
+            <div class="subhead">Key Highlights</div>
+            <ul class="bullets">
+              <li>User research & testing</li>
+              <li>Design system creation</li>
+              <li>Performance optimization</li>
+            </ul>
+            <div class="subhead">Technologies</div>
+            <div class="chips">
+              <span class="chip chip--outline">React</span>
+              <span class="chip chip--outline">Next.js</span>
+              <span class="chip chip--outline">Figma</span>
+              <span class="chip chip--outline">Tailwind CSS</span>
             </div>
-        </section>
-        <!--================End Home Banner Area =================-->
+            <div class="actions">
+              <!-- <a class="btn btn--outline small" href="https://github.com/JDamour" target="_blank" rel="noopener">Code</a> -->
+           <a class="btn btn--outline small" href="#"
+               data-images=" 
+                 assets/images/ecommerce/0.png,  
+                 assets/images/ecommerce/1.png,
+                 assets/images/ecommerce/2.png,
+                 assets/images/ecommerce/3.png,
+                 assets/images/ecommerce/4.png,
+                 assets/images/ecommerce/5.png,
+                 assets/images/ecommerce/6.png,
+                 assets/images/ecommerce/7.png,
+                 assets/images/ecommerce/8.png,
+                 assets/images/ecommerce/9.png,
+                 assets/images/ecommerce/10.png,
+                 assets/images/ecommerce/11.png,
+                 assets/images/ecommerce/12.png,
+                 assets/images/ecommerce/13.png,
+                 assets/images/ecommerce/14.png,
+                 assets/images/ecommerce/15.png,
+                 assets/images/ecommerce/16.png,
+                 assets/images/ecommerce/17.png
+               "
+               >Demo Images</a>
+            </div>
+          </div>
+        </div>
+        <div class="card project project-card">
+          <div class="card__header">IKIMINA Ebanking Dashboard </div>
+          <div class="card__content">
+            <p>Designed and developed a comprehensive analytics dashboard for IKIMINA Ebanking.</p>
+            <div class="subhead">Key Highlights</div>
+            <ul class="bullets">
+              <li>Data visualization</li>
+              <li>Real-time updates</li>
+              <li>Responsive design</li>
+            </ul>
+            <div class="subhead">Technologies</div>
+            <div class="chips">
+              <span class="chip chip--outline">Javascript</span>
+              <span class="chip chip--outline">css</span>
+              <span class="chip chip--outline">React</span>
+              <span class="chip chip--outline">Html</span>
+              <span class="chip chip--outline">Node.js</span>
+            </div>
+            <div class="actions">
+              <!-- <a class="btn btn--outline small" href="https://github.com/JDamour" target="_blank" rel="noopener">Code</a> -->
+           <a class="btn btn--outline small" href="#"
+               data-images="
+                assets/images/ebanking/0.png,   
+                 assets/images/ebanking/1.png,
+                 assets/images/ebanking/2.png,
+                 assets/images/ebanking/3.png,
+                 assets/images/ebanking/4.png,
+                 assets/images/ebanking/5.png,
+                 assets/images/ebanking/6.png,
+                 assets/images/ebanking/7.png,
+                 assets/images/ebanking/8.png,
+                 assets/images/ebanking/9.png,
+                 assets/images/ebanking/10.png,
+                 assets/images/ebanking/11.png,
+                 assets/images/ebanking/12.png,
+                 assets/images/ebanking/13.png,
+                 assets/images/ebanking/14.png,
+                 assets/images/ebanking/15.png,
+                 assets/images/ebanking/16.png,
+                 assets/images/ebanking/17.png,
+                 assets/images/ebanking/18.png,
+                 assets/images/ebanking/19.png,
+                 assets/images/ebanking/20.png,
+                 assets/images/ebanking/21.png,
+                 assets/images/ebanking/22.png,
+                 assets/images/ebanking/23.png,
+                 assets/images/ebanking/24.png,
+                 assets/images/ebanking/25.png,
+                 assets/images/ebanking/26.png,
+                 assets/images/ebanking/27.png,
+                 assets/images/ebanking/28.png,
+                 assets/images/ebanking/29.png,
+                 assets/images/ebanking/30.png,
+                 assets/images/ebanking/31.png,
+                 assets/images/ebanking/32.png,
+                 assets/images/ebanking/33.png,
+                 assets/images/ebanking/34.png,
+                 assets/images/ebanking/35.png,
+                 assets/images/ebanking/36.png,
+                 assets/images/ebanking/37.png,,
+                 assets/images/ebanking/40.png,
+                 assets/images/ebanking/41.png,
+                 assets/images/ebanking/42.png,
+                 assets/images/ebanking/43.png,
+                 assets/images/ebanking/44.png,
+                 assets/images/ebanking/45.png,
+                 assets/images/ebanking/46.png,
+                 assets/images/ebanking/47.png,
+                 assets/images/ebanking/48.png,
+                 assets/images/ebanking/49.png,
+                 assets/images/ebanking/50.png,
+                 assets/images/ebanking/51.png,
+                 assets/images/ebanking/52.png,
+                 assets/images/ebanking/53.png,
+                 assets/images/ebanking/54.png,
+                 assets/images/ebanking/55.png
+               "
+               >Demo Images</a>
+            </div>
+          </div>
+        </div>
+        <div class="card project project-card">
+          <div class="card__header">Mobile Banking App</div>
+          <div class="card__content">
+            <p>Created a user-friendly mobile banking experience with focus on accessibility and security.</p>
+            <div class="subhead">Key Highlights</div>
+            <ul class="bullets">
+              <li>Accessibility compliance</li>
+              <li>Security features</li>
+              <li>Cross-platform</li>
+            </ul>
+            <div class="subhead">Technologies</div>
+            <div class="chips">
+              <span class="chip chip--outline">React Native</span>
+              <span class="chip chip--outline">TypeScript</span>
+              <span class="chip chip--outline">Figma</span>
+              <span class="chip chip--outline">Redux</span>
+            </div>
+            <div class="actions">
+              <!-- <a class="btn btn--outline small" href="https://github.com/JDamour" target="_blank" rel="noopener">Code</a> -->
+            <a class="btn btn--outline small" href="#"
+               data-images="
+                assets/images/ebanking-app/0.png,   
+                 assets/images/ebanking-app/1.png,
+                 assets/images/ebanking-app/2.png,
+                 assets/images/ebanking-app/3.png,
+                 assets/images/ebanking-app/4.png,
+                 assets/images/ebanking-app/6.png,
+                 assets/images/ebanking-app/5.png
+               "
+               >Demo Images</a>
+               </div>
+          </div>
+        </div>
         
-        <!--================Welcome Area =================-->
-        <section class="welcome_area p_120" id="about">
-        	<div class="container">
-        		<div class="row welcome_inner">
-        			<div class="col-lg-6">
-        				<div class="welcome_text">
-        					<h4>About Myself</h4>
-        					<p>I am  a new indie game developer and you will find information on my projects and apps here.
-								 ​It's still a work in progress so check back for any updates My email is mpatswenimanaj@gmail.com</p>
-        					 
-        				</div>
-        			</div>
-        			<div class="col-lg-6">
-        				<div class="tools_expert">
-        					<h3>Tools Expertness</h3>
-        					<div class="skill_main">
-								<div class="skill_item">
-									<h4>Unity 3D <span class="counter">85</span>%</h4>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
-								<div class="skill_item">
-									<h4>Graphic Design <span class="counter">90</span>%</h4>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
-								<div class="skill_item">
-									<h4>Game Programing with C# <span class="counter">95</span>%</h4>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
-								<div class="skill_item">
-									<h4>Project Management <span class="counter">95</span>%</h4>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
-								<div class="skill_item">
-									<h4>Game Design <span class="counter">75</span>%</h4>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
-								<div class="skill_item">
-									<h4>Adobe Master collection cc <span class="counter">65</span>%</h4>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
-								<div class="skill_item">
-									<h4>Web Design <span class="counter">95</span>%</h4>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
-								<div class="skill_item">
-									<h4>Version control (Git,github,gitlab etc...)<span class="counter">95</span>%</h4>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
-								<div class="skill_item">
-									<h4>Web Development (PHP ,LARAVEL etc...)<span class="counter">95</span>%</h4>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
-								<div class="skill_item">
-									<h4>Mobile Development with Flutter <span class="counter">75</span>%</h4>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div> 
-								<div class="skill_item">
-									<h4>ERP Development with odoo  <span class="counter">75</span>%</h4>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-								</div>
-							</div>
-        				</div>
-        			</div>
-        		</div>
-        	</div>
-        </section>
-        <!--================End Welcome Area =================-->
+        <div class="card project project-card">
+          <div class="card__header">HealthMemo UI Design System</div>
+          <div class="card__content">
+            <p>
+              HealthMemo UI Design System & Enhanced Features  Modern UI Design Structure Design Philosophy:
+               "Healing Harmony" A calming, trust-inspiring design that combines medical professionalism with warm accessibility for both human and pet care.
+            </p>
+            <div class="subhead">Key Highlights</div>
+            <ul class="bullets">
+              <li>User research & testing</li>
+              <li>Design system creation</li>
+              <li>Cross-platform</li>
+            </ul>
+            <div class="subhead">Technologies</div>
+            <div class="chips">
+              <span class="chip chip--outline">Html</span>
+              <span class="chip chip--outline">css</span>
+              <span class="chip chip--outline">Figma</span>
+              <span class="chip chip--outline">Javascript</span>
+            </div>
+            <div class="actions">
+              <!-- <a class="btn btn--outline small" href="https://github.com/JDamour" target="_blank" rel="noopener">Code</a> -->
+              <a class="btn btn--outline small" href="#"
+               data-images="
+                assets/images/HealthMemo/0.png,   
+                 assets/images/HealthMemo/1.png,
+                 assets/images/HealthMemo/2.png,
+                 assets/images/HealthMemo/3.png,
+                 assets/images/HealthMemo/4.png,
+                 assets/images/HealthMemo/5.png
+               "
+               >Demo Images</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container center">
+      <h2 class="section__title gradient">Let's Work Together</h2>
+      <p class="lead">I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="mailto:mpatswenimanaj@gmail.com">Send Me an Email</a>
+        <a class="btn btn--outline" href="https://github.com/JDamour" target="_blank" rel="noopener">Follow on GitHub</a>
+      </div>
+      <div class="socials">
+        <a href="https://github.com/JDamour" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/jean-d-amour-mpatswenimana/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:mpatswenimanaj@gmail.com">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container center">
+      <p>© 2025 Jean-Damour.</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="gallery" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__dialog modal__dialog--lg">
+      <button class="modal__close" data-close aria-label="Close">×</button>
+      <div class="slider" id="slider">
+        <button class="slider__control slider__control--prev" id="prevBtn" aria-label="Previous">‹</button>
+        <div class="slider__viewport">
+          <div class="slider__track" id="sliderTrack"><!-- slides injected here --></div>
+        </div>
+        <button class="slider__control slider__control--next" id="nextBtn" aria-label="Next">›</button>
+      </div>
+      <div class="slider__footer">
+        <div class="dots" id="dots"><!-- dots injected --></div>
+        <div class="counter" id="counter">1 / 1</div>
+      </div>
+      <div class="image-caption" id="imageCaption"></div>
+      <div class="keyboard-help" id="keyboardHelp">
+        <span class="help-toggle" id="helpToggle">?</span>
+        <div class="help-content" id="helpContent" hidden>
+          <div class="help-title">Keyboard Shortcuts</div>
+          <div class="help-shortcuts">
+            <div><kbd>←</kbd> / <kbd>→</kbd> Previous / Next</div>
+            <div><kbd>Space</kbd> Next Image</div>
+            <div><kbd>1-9</kbd> Jump to Image</div>
+            <div><kbd>Home</kbd> / <kbd>End</kbd> First / Last</div>
+            <div><kbd>Esc</kbd> Close</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Smooth scroll and active navigation
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const hash = a.getAttribute('href');
+        if (!hash || hash === '#') return; // ignore placeholder links
+        const target = document.querySelector(hash);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+          navLinks.classList.remove('open');
+          
+          // Update active navigation link
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+          });
+          a.classList.add('active');
+        }
+      });
+    });
+
+    // Scroll indicator
+    const scrollIndicator = document.getElementById('scrollIndicator');
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      scrollIndicator.style.width = scrolled + '%';
+    });
+
+    // Update active navigation on scroll
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const sections = document.querySelectorAll('section[id], header[id]');
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Image gallery modal (improved version)
+    document.querySelectorAll('.project a[data-images]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const images = link.getAttribute('data-images').split(',').map(img => img.trim());
+        const modal = document.getElementById('gallery');
+        const track = document.getElementById('sliderTrack');
+        const dots = document.getElementById('dots');
+        const counter = document.getElementById('counter');
+        const caption = document.getElementById('imageCaption');
         
-         
-        <!--================Projects Area =================-->
-        <section class="projects_area p_120" id="portfolio">
-        	<div class="container">
-        		<div class="main_title">
-					<h2>my Recent working Projects</h2>
-			 	</div>
-        		<div class="projects_fillter">
-					<ul class="filter list">
-						<li class="active" data-filter="*"><a href="#">Games</a></li>
-					 
-					</ul>
-				</div>
-				<div class="projects_inner row">
-					<div class="col-lg-4 col-sm-6 brand web">
-						<div class="projects_item">
-							<img class="img-fluid" src="img/projects/projects-1.jpg" alt="">
-							<div class="projects_text">
-								<a href="#"><h4>Kido paint</h4></a>
-								<p>App for kids</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6 brand work">
-						<div class="projects_item">
-							<img class="img-fluid" src="img/projects/projects-2.jpg" alt="">
-							<div class="projects_text">
-								<a href="#"><h4>Magic 3D cards</h4></a>
-								<p>AR 3D animals magic cards </p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6 work">
-						<div class="projects_item">
-							<img class="img-fluid" src="img/projects/projects-3.jpg" alt="">
-							<div class="projects_text">
-								<a href="https://play.google.com/store/apps/details?id=com.forandinde.com&hl=en" target="_brank"><h4>Fora ndi nde ?</h4></a>
-								<p>Matching game for kids</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6 brand web">
-						<div class="projects_item">
-							<img class="img-fluid" src="img/projects/projects-4.jpg" alt="">
-							<div class="projects_text">
-								<a href="#"><h4>Virtual lab</h4></a>
-								<p>Education app for high school student</p>
-							</div>
-						</div>
-					</div>
-					 
-				</div>
-        	</div>
-        </section>
-        <!--================End Projects Area =================-->
-       
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/popper.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/stellar.js"></script>
-        <script src="vendors/lightbox/simpleLightbox.min.js"></script>
-        <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
-        <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
-        <script src="vendors/isotope/isotope-min.js"></script>
-        <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-        <script src="js/jquery.ajaxchimp.min.js"></script>
-        <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
-        <script src="vendors/counter-up/jquery.counterup.min.js"></script>
-        <script src="js/mail-script.js"></script>
-       <script src="js/gmaps.min.js"></script>
-        <script src="js/theme.js"></script>
-    </body>
+        // Generate captions from image filenames
+        const captions = images.map(src => {
+          const filename = src.split('/').pop().split('.')[0];
+          return filename.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        });
+        
+        
+        // Build slides
+        track.innerHTML = images.map((src, i) => `
+          <div class="slide">
+            <div class="image-container">
+              <img src="${src}" alt="${captions[i]}" onerror="this.onerror=null; this.src=''; this.parentElement.innerHTML='<div class=\\'error-message\\'>Image failed to load</div>';">
+            </div>
+          </div>
+        `).join('');
+        
+        // Ensure images are properly sized when loaded
+        track.querySelectorAll('img').forEach(img => {
+          img.onload = function() {
+            // Force reflow to ensure proper sizing
+            this.style.display = 'none';
+            this.offsetHeight; // Trigger reflow
+            this.style.display = '';
+          };
+        });
+        
+        // Build dots
+        dots.innerHTML = images.map((_, i) => `<button class="dot" data-index="${i}" aria-label="Go to slide ${i+1}"></button>`).join('');
+        
+        let index = 0;
+        const total = images.length;
+        const viewport = document.querySelector('.slider__viewport');
+
+        function update() {
+          const offset = -index * viewport.clientWidth;
+          track.style.transform = `translateX(${offset}px)`;
+          dots.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === index));
+          counter.textContent = `${index + 1} / ${total}`;
+          document.getElementById('prevBtn').disabled = index === 0;
+          document.getElementById('nextBtn').disabled = index === total - 1;
+          
+          // Update caption
+          if (captions && captions[index]) {
+            caption.textContent = captions[index];
+          } else {
+            caption.textContent = '';
+          }
+          
+          // Ensure current image is properly sized
+          const currentSlide = track.children[index];
+          if (currentSlide) {
+            const currentImg = currentSlide.querySelector('img');
+            if (currentImg) {
+              // Force reflow to ensure proper sizing
+              setTimeout(() => {
+                currentImg.style.display = 'none';
+                currentImg.offsetHeight; // Trigger reflow
+                currentImg.style.display = '';
+              }, 10);
+            }
+          }
+        }
+        
+        // Function to ensure all images are properly sized
+        function ensureImageSizing() {
+          track.querySelectorAll('img').forEach(img => {
+            if (img.complete) {
+              // Force reflow to ensure proper sizing
+              img.style.display = 'none';
+              img.offsetHeight; // Trigger reflow
+              img.style.display = '';
+            } else {
+              img.onload = function() {
+                // Force reflow to ensure proper sizing
+                this.style.display = 'none';
+                this.offsetHeight; // Trigger reflow
+                this.style.display = '';
+              };
+            }
+          });
+        }
+        
+        
+        function next() { 
+          if (index < total - 1) { 
+            index++; 
+            update(); 
+          } 
+        }
+        
+        function prev() { 
+          if (index > 0) { 
+            index--; 
+            update(); 
+          } 
+        }
+
+        document.getElementById('nextBtn').onclick = next;
+        document.getElementById('prevBtn').onclick = prev;
+        dots.querySelectorAll('.dot').forEach(btn => btn.addEventListener('click', () => { 
+          index = Number(btn.dataset.index); 
+          update(); 
+        }));
+
+        // Keyboard navigation when modal open
+        function onKey(e){
+          if (modal.hidden) return;
+          
+          // Prevent default behavior for navigation keys
+          if (['ArrowRight', 'ArrowLeft', 'Escape', ' '].includes(e.key)) {
+            e.preventDefault();
+          }
+          
+          if (e.key === 'ArrowRight' || e.key === ' ') next(); // Space or right arrow for next
+          if (e.key === 'ArrowLeft') prev(); // Left arrow for previous
+          if (e.key === 'Escape') closeModal(); // Escape to close
+          
+          // Number keys to jump to specific slides
+          if (e.key >= '1' && e.key <= '9') {
+            const slideIndex = parseInt(e.key) - 1;
+            if (slideIndex < total) {
+              index = slideIndex;
+              update();
+            }
+          }
+          
+          // Home/End keys for first/last slide
+          if (e.key === 'Home') {
+            index = 0;
+            update();
+          }
+          if (e.key === 'End') {
+            index = total - 1;
+            update();
+          }
+        }
+        window.addEventListener('keydown', onKey);
+
+        // Enhanced touch gesture support
+        let startX = 0;
+        let startY = 0;
+        let initialDistance = 0;
+        let isZooming = false;
+        
+        // Handle touch start
+        viewport.addEventListener('touchstart', e => {
+          if (e.touches.length === 1) {
+            // Single touch for swiping
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+          } else if (e.touches.length === 2) {
+            // Two touches for pinch zoom
+            isZooming = true;
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            initialDistance = Math.sqrt(dx * dx + dy * dy);
+          }
+        }, { passive: true });
+        
+        // Handle touch move
+        viewport.addEventListener('touchmove', e => {
+          if (e.touches.length === 2 && isZooming) {
+            // Pinch to zoom
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+          }
+        }, { passive: true });
+        
+        // Handle touch end
+        viewport.addEventListener('touchend', e => {
+          if (e.touches.length === 0 && !isZooming) {
+            // Single touch ended - check for swipe
+            const dx = e.changedTouches[0].clientX - startX;
+            const dy = e.changedTouches[0].clientY - startY;
+            
+            // Only trigger swipe if horizontal movement is greater than vertical
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+              dx < 0 ? next() : prev();
+            }
+          }
+          
+          // Reset zoom state
+          if (e.touches.length < 2) {
+            isZooming = false;
+          }
+        });
+
+        function closeModal(){
+          modal.hidden = true;
+          document.body.style.overflow = '';
+          window.removeEventListener('keydown', onKey);
+        }
+
+        // Wire close buttons/backdrop
+        modal.querySelectorAll('[data-close]').forEach(el => { el.onclick = closeModal; });
+        
+        
+        // Keyboard help toggle
+        const helpToggle = document.getElementById('helpToggle');
+        const helpContent = document.getElementById('helpContent');
+        
+        helpToggle.addEventListener('click', () => {
+          helpContent.hidden = !helpContent.hidden;
+        });
+        
+        // Close help when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!helpToggle.contains(e.target) && !helpContent.contains(e.target)) {
+            helpContent.hidden = true;
+          }
+        });
+
+        // Show modal
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        
+        // Initial layout
+        track.style.width = `${viewport.clientWidth * total}px`;
+        update();
+        
+        // Ensure all images are properly sized after a short delay
+        setTimeout(ensureImageSizing, 100);
+        
+        // Recompute on resize
+        const onResize = () => {
+          track.style.transition = 'none';
+          track.style.width = `${viewport.clientWidth * total}px`;
+          update();
+          requestAnimationFrame(() => { track.style.transition = ''; });
+          
+          // Ensure images are properly sized after resize
+          setTimeout(ensureImageSizing, 50);
+        };
+        
+        window.addEventListener('resize', onResize);
+        
+        // Use ResizeObserver to ensure consistent sizing
+        if (window.ResizeObserver) {
+          const resizeObserver = new ResizeObserver(() => {
+            ensureImageSizing();
+          });
+          
+          // Observe the viewport for size changes
+          resizeObserver.observe(viewport);
+          
+          // Clean up observer when modal is closed
+          modal.querySelector('[data-close]').addEventListener('click', () => {
+            resizeObserver.disconnect();
+          }, { once: true });
+        }
+        
+        // Clean up resize listener when closed via close button
+        modal.querySelector('[data-close]').addEventListener('click', () => { 
+          window.removeEventListener('resize', onResize); 
+        }, { once: true });
+      });
+    });
+    
+    document.querySelectorAll('[data-close]').forEach(el => {
+      el.addEventListener('click', () => {
+        const modal = document.getElementById('gallery');
+        modal.hidden = true;
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Ensure modal is hidden on initial load
+    const modalInit = document.getElementById('gallery');
+    if (modalInit) modalInit.hidden = true;
+    
+    // Set initial active nav link
+    document.addEventListener('DOMContentLoaded', () => {
+      const homeLink = document.querySelector('.nav-link[href="#home"]');
+      if (homeLink) homeLink.classList.add('active');
+    });
+  </script>
+</body>
 </html>
